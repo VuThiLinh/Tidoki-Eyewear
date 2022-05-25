@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Đăng nhập</title>
+    <link href="~/Areas/Admin/assets/login/login.css" rel="stylesheet" />
+    <style>
+        input[type=password] {
+            background-color: #f6f6f6;
+            border: none;
+            color: #0d0d0d;
+            padding: 15px 32px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 5px;
+            width: 85%;
+            border: 2px solid #f6f6f6;
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            -ms-transition: all 0.5s ease-in-out;
+            -o-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+            -webkit-border-radius: 5px 5px 5px 5px;
+            border-radius: 5px 5px 5px 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <h2 class="active"> Đăng nhập </h2>
+        @*<h2 class="inactive underlineHover">Đăng ký </h2>*@
+        @if (TempData["erorrAdmin"] != null)
+        {
+            <p style="color: red;">@TempData["erorrAdmin"].ToString()</p>
+        }
+        <form action="/Admin/DangNhap/Index" method="post">
+            <input type="text" id="userName" class="fadeIn second" name="userName" autocomplete="off" placeholder="Tên đăng nhập">
+            <input type="password" id="password" class="fadeIn third" name="passWord" autocomplete="off" placeholder="Mật khẩu">
+            <input type="submit" class="fadeIn fourth" value="ĐĂNG NHẬP">
+        </form>
+    </div>
+</div>
+    
+</body>
+</html>
+

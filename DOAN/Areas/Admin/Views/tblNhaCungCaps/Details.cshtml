@@ -1,0 +1,55 @@
+﻿@model DOAN.Models.tblNhaCungCap
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .text-color {
+        color: #3c3d46;
+    }
+</style>
+
+<h2 class="text-color">Thông tin chi tiết nhà cung cấp</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt class="text-color">
+            Mã nhà cung cấp:
+        </dt>
+
+        <dd class="text-color">
+            @Html.DisplayFor(model => model.MaNCC)
+        </dd>
+
+        <dt class="text-color">
+            Tên nhà cung cấp:
+        </dt>
+
+        <dd class="text-color">
+            @Html.DisplayFor(model => model.TenNCC)
+        </dd>
+
+        <dt class="text-color">
+            Địa chỉ:
+        </dt>
+
+        <dd class="text-color">
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt class="text-color">
+            Số điện thoại:
+        </dt>
+
+        <dd class="text-color">
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaNCC }) |
+    @Html.ActionLink("Danh sách", "Index")
+</p>

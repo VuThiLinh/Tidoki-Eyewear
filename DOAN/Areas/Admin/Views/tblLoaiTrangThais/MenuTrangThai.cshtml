@@ -1,0 +1,12 @@
+﻿@model List<DOAN.Models.tblLoaiTrangThai>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            <a href="@Url.Action("TrangThaiTheoLTT", "tblTrangThais", new { id = item.MaLTT})" class="nav-item nav-link pt-3 pb-3">
+                @Html.DisplayFor(modelItem => item.TenLTT)
+            </a>
+        </td>
+    </tr>
+}
+

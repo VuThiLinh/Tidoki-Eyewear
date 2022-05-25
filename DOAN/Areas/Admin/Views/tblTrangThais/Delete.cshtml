@@ -1,0 +1,42 @@
+﻿@model DOAN.Models.tblTrangThai
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .text-color {
+        color: #3c3d46;
+    }
+</style>
+<h3 class="text-color">Bạn có chắc chắn muốn xóa trạng thái này không?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal text-color">
+        <dt>
+            Tên trạng thái:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTrangThai)
+        </dd>
+
+        <dt>
+            Loại trạng thái:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblLoaiTrangThai.TenLTT)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-primary" /> |
+            @Html.ActionLink("Danh sách", "Index")
+        </div>
+    }
+</div>

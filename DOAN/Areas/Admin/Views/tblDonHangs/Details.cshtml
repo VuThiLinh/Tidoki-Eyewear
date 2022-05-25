@@ -1,0 +1,72 @@
+﻿@model DOAN.Models.tblDonHang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .text-color {
+        color: #3c3d46;
+    }
+</style>
+
+<h2 class="text-color">Thông tin chi tiết đơn hàng</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal text-color">
+        <dt>
+            Tên người nhận:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNguoiNhan)
+        </dd>
+
+        <dt>
+            Địa chỉ giao hàng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChiGiaoHang)
+        </dd>
+
+        <dt>
+            Số điện thoại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+        <dt>
+            Ngày đặt hàng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDatHang)
+        </dd>
+
+        <dt>
+            Tên người dùng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblNguoiDung.TenNguoiDung)
+        </dd>
+
+        <dt>
+            Trạng thái
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblTrangThai.TenTrangThai)
+        </dd>
+
+    </dl>
+</div>
+@Html.Action("ChiTietDonHang", "tblChiTietDonHangs", new { id = Model.MaDonHang, matt = Model.MaTrangThai})
+<p>
+    @*@Html.ActionLink("Sửa", "Edit", new { id = Model.MaDonHang }) |*@
+    @Html.ActionLink("Danh sách", "Index")
+</p>

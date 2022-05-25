@@ -1,0 +1,99 @@
+﻿@model DOAN.Models.tblPhieuNhap
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var NguoiDung = ViewBag.NguoiDung as DOAN.Models.tblNguoiDung;
+}
+
+<style>
+    .detail {
+        display: none;
+    }
+</style>
+
+<h2>Thêm mới phiếu nhập</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Ngày nhập</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NgayNhap, new { htmlAttributes = new { @class = "date form-control" } })
+                @Html.ValidationMessageFor(model => model.NgayNhap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Ghi chú</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GhiChu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Nhà cung cấp</div>
+            <div class="col-md-10">
+                @Html.DropDownList("MaNCC", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaNCC, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Người tạo</div>
+            <div class="col-md-10">
+                <input type="text" class="form-control" value="@NguoiDung.TenNguoiDung" readonly />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Trạng thái</div>
+            <div class="col-md-10">
+                @Html.DropDownList("MaTrangThai", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaTrangThai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm" class="btn btn-primary them" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Danh sách", "Index")
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+@section scripts{
+
+
+    <script src="~/Areas/Admin/assets/js/lib/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/Areas/Admin/assets/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="~/Areas/Admin/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    
+    <script>
+        $(document).ready(function () {
+            $('.date').datepicker({
+                autoclose: true,
+                format: 'mm/dd/yyyy',
+            });
+            $('.endDate').datepicker({
+                autoclose: true,
+                format: 'dd/mm/yyyy',
+            });
+
+        });
+    </script>
+}

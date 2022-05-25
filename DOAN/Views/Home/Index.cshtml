@@ -1,0 +1,112 @@
+﻿@model List<DOAN.Models.tblSanPham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5 pb-3">
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="d-flex align-items-center border mb-4" style="padding: 20px 25px;">
+                <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
+                <h6 class="font-weight-semi-bold m-0">Sản phẩm chất lượng</h6>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="d-flex align-items-center border mb-4" style="padding: 20px 25px;">
+                <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
+                <h6 class="font-weight-semi-bold m-0">Miễn phí vận chuyển</h6>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="d-flex align-items-center border mb-4" style="padding: 20px 25px;">
+                <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
+                <h6 class="font-weight-semi-bold m-0">Đổi trả trong 14 ngày</h6>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="d-flex align-items-center border mb-4" style="padding: 20px 60px;">
+                <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
+                <h6 class="font-weight-semi-bold m-0">Hỗ trợ 24/7</h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5 pb-3">
+
+        <div class="col-lg-4 col-md-6 pb-1">
+            <div class="cat-item d-flex flex-column border mb-4">
+                <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                    <img class="img-fluid w-100" style="object-fit: cover; height: 25rem;" src="~/Theme/img/sp2.jpg" alt="">
+                </a>
+                <h5 class="font-weight-semi-bold m-0" style="padding: 30px;">Kính giả cận</h5>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 pb-1">
+            <div class="cat-item d-flex flex-column border mb-4">
+                <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                    <img class="img-fluid w-100" style="object-fit: cover; height: 25rem;" src="~/Theme/img/cat-20.png" alt="">
+                </a>
+                <h5 class="font-weight-semi-bold m-0" style="padding: 30px;">Kính râm</h5>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 pb-1">
+            <div class="cat-item d-flex flex-column border mb-4">
+                <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                    <img class="img-fluid w-100" style="object-fit: cover; height: 25rem;" src="~/Theme/img/cat-9.jpg" alt="">
+                </a>
+                <h5 class="font-weight-semi-bold m-0" style="padding: 30px;">Gọng kính kim loại</h5>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 pb-1">
+            <div class="cat-item d-flex flex-column border mb-4">
+                <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                    <img class="img-fluid w-100" style="object-fit: cover; height: 25rem;" src="~/Theme/img/sp32.jpg" alt="">
+                </a>
+                <h5 class="font-weight-semi-bold m-0" style="padding: 30px;">Kính thời trang</h5>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 pb-1">
+            <div class="cat-item d-flex flex-column border mb-4">
+                <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                    <img class="img-fluid w-100" style="object-fit: cover; height: 25rem;" src="~/Theme/img/cat-3.jpg" alt="">
+                </a>
+                <h5 class="font-weight-semi-bold m-0" style="padding: 30px;">Gọng nhựa dẻo</h5>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 pb-1">
+            <div class="cat-item d-flex flex-column border mb-4">
+                <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                    <img class="img-fluid w-100" style="object-fit: cover; height: 25rem;" src="~/Theme/img/sp11.jpg" alt="">
+                </a>
+                <h5 class="font-weight-semi-bold m-0" style="padding: 30px;">Kính áp tròng</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="call-to-action bg-primary p-3">
+    <div class="container-fluid pl-4 pr-4">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="text-white">Hãy liên hệ với chúng tôi</h2>
+            </div>
+            <div class="col-md-6 text-right">
+                <a href="tel:0867 058 299" class="text-white p-1" style="border: 1px solid #ffffff; border-radius: 4px; padding: 0 20px; font-size: 30px;">0867 058 299</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid pt-5 text-center mb-4">
+    <h2 class="section-title px-5"><span class="px-2">Sản phẩm mới nhất</span></h2>
+</div>
+<div class="container-fluid ml-3 mr-3 pl-5 pr-5">
+    @Html.Action("SanPhamMoi", "SanPham")
+</div>
+
+
+
+

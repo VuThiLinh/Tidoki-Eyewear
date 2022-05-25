@@ -1,0 +1,75 @@
+﻿.avt {
+    /*border-bottom: 1px solid #efefef;*/
+}
+
+.avt_img {
+    border-radius: 50%;
+}
+
+.avt .name {
+    font-weight: 600;
+}
+
+ul {
+    list-style: none;
+    padding-top: 12px;
+    padding-left: 0;
+}
+
+ul li {
+    padding: 8px 0;
+}
+
+.icon {
+    font-size: 22px;
+    margin-right: 10px;
+}
+
+.main {
+
+}
+
+.main_detail {
+}
+
+.main_detail-icon {
+    font-size: 2.8rem;
+    border-radius: 50%;
+    padding: 12px;
+    font-size: 1.875rem;
+    border: 4px solid #e78278;
+    color: #e78278;
+    background-color: #fff;
+}
+
+.stepper__line-foreground {
+    position: absolute;
+    top: 29px;
+    left: 158px;
+    height: 4px;
+    width: 100%;
+}
+
+.stepper__line-foreground1 {
+    position: absolute;
+    top: 29px;
+    left: 420px;
+    height: 4px;
+    width: 100%;
+}
+
+.stepper__line-foreground2 {
+    position: absolute;
+    top: 29px;
+    left: 674px;
+    height: 4px;
+    width: 100%;
+}
+
+.stepper__line-background {
+    position: absolute;
+    width: calc(100% - 140px);
+    margin: 0 70px;
+    height: 100%;
+    box-sizing: border-box;
+}

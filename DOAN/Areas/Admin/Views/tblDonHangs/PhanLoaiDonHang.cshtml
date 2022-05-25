@@ -1,0 +1,54 @@
+﻿@model List<DOAN.Models.tblDonHang>
+@{
+    ViewBag.Title = "PhanLoaiDonHang";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>PhanLoaiDonHang</h2>
+<table class="table table-hover table-bordered">
+    <tr>
+        <th>
+            Tên người nhận
+        </th>
+        <th>
+            Địa chỉ giao hàng
+        </th>
+        <th>
+            Số điện thoại
+        </th>
+        <th>
+            Ngày đặt hàng
+        </th>
+        <th>
+            Tình trạng
+        </th>
+        <th>Chức năng</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNguoiNhan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChiGiaoHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDatHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tblTrangThai.TenTrangThai)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.MaDonHang }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.MaDonHang }) @*|
+                    @Html.ActionLink("Delete", "Delete", new { id=item.MaDonHang })*@
+            </td>
+        </tr>
+    }
+
+</table>

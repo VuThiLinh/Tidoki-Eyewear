@@ -1,0 +1,95 @@
+﻿@model DOAN.Models.tblSanPham
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .text-color {
+        color: #3c3d46;
+    }
+</style>
+
+<h2 class="text-color">Chi tiết sản phẩm</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal text-color">
+        <dt>
+            Mã sản phẩm: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaSanPham)
+        </dd>
+
+        <dt>
+            Tên sản phẩm:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSanPham)
+        </dd>
+
+        <dt>
+            Hình ảnh:
+        </dt>
+
+        <dd>
+            <img src="@Model.HinhAnh" name="fileImage" width="300" />
+        </dd>
+
+        <dt>
+            Mô tả: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            Số lượng: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+        <dt>
+            Đơn vị tính: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonViTinh)
+        </dd>
+
+        <dt>
+            Đơn giá: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonGia)
+        </dd>
+
+        <dt>
+            Tên danh mục: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblDanhMucSP.TenDanhMuc)
+        </dd>
+
+        <dt>
+            Tên nhà cung cấp: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblNhaCungCap.TenNCC)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaSanPham }) |
+    @Html.ActionLink("Danh sách", "Index")
+</p>

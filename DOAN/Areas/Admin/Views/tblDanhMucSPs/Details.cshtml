@@ -1,0 +1,41 @@
+﻿@model DOAN.Models.tblDanhMucSP
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .text-color {
+        color: #3c3d46;
+    }
+</style>
+
+<h2 class="text-color">Thông tin chi tiết danh mục</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal text-color">
+        <dt>
+            Mã danh mục:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaDanhMuc)
+        </dd>
+
+        <dt>
+            Tên danh mục:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDanhMuc)
+        </dd>
+
+    </dl>
+</div>
+@Html.Action("SanPhamTheoDanhMuc1", "tblSanPhams", new { id = Model.MaDanhMuc, matt = Model.MaDanhMuc })
+
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaDanhMuc }) |
+    @Html.ActionLink("Danh sách", "Index")
+</p>

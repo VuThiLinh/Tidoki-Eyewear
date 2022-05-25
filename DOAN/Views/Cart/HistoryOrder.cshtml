@@ -1,0 +1,59 @@
+﻿@model IEnumerable<DOAN.Models.tblChiTietDonHang>
+@using DOAN.Models;
+@{
+    ViewBag.Title = "HistoryOrder";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    var user = Session["UserLogin"] as tblNguoiDung;
+}
+
+<div class="row px-xl-5 py-5">
+    <h4>Lịch sử mua hàng của khách hàng @user.TenNguoiDung </h4>
+    <table class="table table-bordered  w-100 px-xl-5">
+        <thead>
+            <tr class="text-center">
+                <th align="center">Hình ảnh</th>
+                <th align="center">Tên sản phẩm</th>
+                <th align="center">Đơn giá</th>
+                <th align="center">Số lượng</th>
+                <th align="center">Thành Tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td align="center">
+                        <img src="@item.tblSanPham.HinhAnh" width="120" />
+                    </td>
+                    <td>
+                        @item.tblSanPham.TenSanPham
+                    </td>
+                    <td align="right">
+                        @item.DonGia.ToString("#,##0")
+                    </td>
+                    <td align="center">
+                        @item.SoLuong
+                    </td>
+                    <td align="center">
+                        @{
+                            var total = (item.DonGia) * (item.SoLuong);
+                        }
+                        @total.ToString("#,##0")
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" align="right" class="font-weight-bold">
+                    Tổng tiền:
+                </td>
+                <td class="TongTien font-weight-bold" style="text-align:right">
+                    @ViewBag.Total.ToString("#,##0")
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+

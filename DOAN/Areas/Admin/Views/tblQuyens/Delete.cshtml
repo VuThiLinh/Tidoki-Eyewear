@@ -1,0 +1,37 @@
+﻿@model DOAN.Models.tblQuyen
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h3>Bạn có chắc chắn muốn xóa quyền truy cập này không?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã quyền:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaQuyen)
+        </dd>
+
+        <dt>
+            Tên quyền:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenQuyen)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-primary" /> |
+            @Html.ActionLink("Danh sách", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,32 @@
+﻿@model List<DOAN.Models.tblTrangThai>
+@{
+    ViewBag.Title = "TrangThaiTheoLTT";
+    Layout = null;
+    //Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2></h2>
+
+<table class="table table-bordered table-hover w-50">
+    <tr>
+        <th>
+            Mã trạng thái
+        </th>
+        <th>
+            Tên trạng thái
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaTrangThai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenTrangThai)
+            </td>
+        </tr>
+    }
+
+</table>

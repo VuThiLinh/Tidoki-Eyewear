@@ -1,0 +1,47 @@
+﻿@model DOAN.Models.tblTrangThai
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .text-color {
+        color: #3c3d46;
+    }
+</style>
+
+<h2 class="text-color">Chi tiết trạng thái</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal text-color">
+        <dt>
+            Mã trạng thái:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaTrangThai)
+        </dd>
+
+        <dt>
+            Tên trạng thái:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTrangThai)
+        </dd>
+
+        <dt>
+            Tên loại trạng thái:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblLoaiTrangThai.TenLTT)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaTrangThai }) |
+    @Html.ActionLink("Danh sách", "Index")
+</p>

@@ -1,0 +1,34 @@
+﻿@model DOAN.Models.tblDanhMucSP
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .text-color {
+        color: #3c3d46;
+    }
+</style>
+<h3 class="text-color">Bạn có chắc chắn xóa danh mục này không?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal text-color">
+        <dt>
+            Tên danh mục
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDanhMuc)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-primary" /> |
+            @Html.ActionLink("Danh sách", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,91 @@
+﻿@{
+    Layout = null;
+    var dataKH = Session["UserLogin"] as DOAN.Models.tblNguoiDung;
+}
+@if (dataKH != null)
+{
+    <form action="~/Cart/HoaDon" method="post" id="form-data" data="formdata">
+        <div class="row">
+            <div class="col-md-6 border p-4">
+                <h4>Thông tin người đặt hàng</h4>
+                <div class="form-group">
+                    <label for="Name">Họ tên</label>
+                    <input type="text" class="form-control" id="Name" name="Name" readonly
+                           value="@dataKH.TenNguoiDung">
+                </div>
+                <div class="form-group">
+                    <label for="Address">Địa chỉ</label>
+                    <input type="text" class="form-control" id="Address" name="Address" readonly
+                           value="@dataKH.DiaChi">
+                </div>
+                <div class="form-group">
+                    <label for="Phone">Số điện thoại</label>
+                    <input type="text" class="form-control" id="Phone" name="Phone"
+                           value="@dataKH.SDT">
+                </div>
+                @*<div class="form-group">
+                        <label for="Date">Ngày đặt hàng</label>
+                        <input type="date" class="form-control" id="Date" name="Date"
+                               >
+                    </div>*@
+            </div>
+            <div class="col-md-6 border p-4">
+                <h4>Thông tin người nhận hàng</h4>
+                <div class="form-group">
+                    <label for="HoTen">Họ tên</label>
+                    <input type="text" class="form-control" id="HoTen" name="HoTen" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="DiaChi">Địa chỉ</label>
+                    <input type="text" class="form-control" id="DiaChi" name="DiaChi" required>
+                </div>
+                <div class="form-group">
+                    <label for="SDT">Điện thoại</label>
+                    <input type="text" class="form-control" id="SDT" name="SDT" required>
+                </div>
+                @*<div class="form-group">
+                        <label for="NgayDat">Ngày đặt hàng</label>
+                        <input type="date" class="form-control" id="NgayDat" name="NgayDat" placeholder="Ngày đặt hàng">
+                    </div>*@
+
+            </div>
+            <div class="col-md-12 pr-0 mt2" style="clear:both; text-align:right">
+                <input type="submit" value="Đặt hàng" name="btnThanhToan" id="btnMua" class="btn btn-primary btnMua" />
+            </div>
+        </div>
+    </form>
+    @*<input id="copy" type="checkbox" />*@
+}
+else
+{
+    <div class="d-flex align-content-center">
+        <i class="fas fa-exclamation text-primary" style="font-size: 1.6rem; margin-top: 2px;"></i>
+        <span class="text-primary" style="font-size: 1.6rem;"> Bạn cần đăng nhập để tiếp tục đặt hàng</span>
+    </div>
+}
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#btnMua").click(function () {
+            //event.preventDefault();
+            var data = $("#form-data").serializeArray();
+            json = {};
+            $.each(data, function (i, field) {
+                json[field.name] = field.value;
+            })
+            //var formdata = JSON.stringify(json);
+            console.log(json);
+        })
+        //$('#copy').click(function () {
+        //    if ($(this).is(':checked')) {
+        //        var f1 = $('#Name').val();
+        //        $('#hoTen').val(f1);
+        //    } else {
+        //        $('#hoTen').val("");
+        //    }
+        //});
+    });
+</script>

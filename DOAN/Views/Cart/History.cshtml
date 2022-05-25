@@ -1,0 +1,33 @@
+﻿@*@model List<DOAN.Models.tblDonHang>*@
+@{
+    ViewBag.Title = "History";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    //var NguoiDung = ViewBag.NguoiDung as DOAN.Models.tblNguoiDung;
+}
+<div class="row px-xl-5 py-5">
+    <h4>LỊCH SỬ MUA HÀNG</h4>
+    
+    @*@ViewBag.user;*@
+    <table class="table table-bordered  w-100 px-xl-5">
+        <thead>
+            <tr>
+                <th align="center">Mã đơn hàng</th>
+                <th align="center">Ngày đặt hàng</th>
+                <th align="center">Trạng thái</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.DonHangs)
+            {
+            <tr>
+                <td>@item.MaDonHang</td>
+                <td>@item.NgayDatHang</td>
+                <td>@item.tblTrangThai.TenTrangThai</td>
+
+            </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+

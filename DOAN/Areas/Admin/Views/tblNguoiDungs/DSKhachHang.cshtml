@@ -1,0 +1,75 @@
+﻿
+@model IEnumerable<DOAN.Models.tblNguoiDung>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/Areas/Admin/assets/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" />
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DANH SÁCH KHÁCH HÀNG</h6>
+        </div>
+        @*<a class="btn btn-primary ml-4 mt-2 pl-2" href="@Url.Action("Create")" style="width: 6rem;">Thêm mới</a>
+        <a class="pl-4 pt-4" href="~/Admin/tblNguoiDungs/DSNhanVien">Danh sách nhân viên</a>*@
+
+        <div class="card-body text-dark">
+            <div class="table-responsive">
+                <table class="table table-bordered dataTable text-dark" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Tên khách hàng</th>
+                            <th>Giới tính</th>
+                            <th>Địa chỉ</th>
+                            <th>Số điện thoại</th>
+                            <th>Quyền truy cập</th>
+                            <th>Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TenNguoiDung)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GioiTinh)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiaChi)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SDT)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tblQuyen.TenQuyen)
+                            </td>
+                            <td>
+                                @*<a href="@Url.Action("Edit","tblNguoiDungs", new {id = item.MaNguoiDung })" class="p-1 data-toggle= text-primary">Sửa</a><span>|</span>*@
+                                <a href="@Url.Action("Details","tblNguoiDungs", new {id = item.MaNguoiDung })" class="p-1 data-toggle= text-primary">Chi tiết</a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section scripts{
+    <script src="~/Areas/Admin/assets/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="~/Areas/Admin/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.dataTable').DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/vi.json'
+                },
+            });
+        });
+    </script>
+}
+

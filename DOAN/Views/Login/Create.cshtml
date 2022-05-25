@@ -1,0 +1,76 @@
+﻿@model DOAN.Models.tblNguoiDung
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html style="background-color: #e78278;">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <link href="~/Areas/Admin/assets/login/login.css" rel="stylesheet" />
+    <style>
+        
+        .active {
+            border-bottom: 2px solid #D19C97 !important
+        }
+
+        .cssa {
+            color: #0d0d0d;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin: 40px 8px 10px 8px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <a href="~/Login/Index" class="cssa"> Đăng nhập </a>
+            <a class="inactive underlineHover active cssa">Đăng ký </a>
+            <form id="form-1" action="~/Login/Create" method="post">
+                <div class="form-group">
+                    <input type="text" id="hoTen" class="fadeIn second" name="hoTen" placeholder="Họ và tên">
+                    <span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="namSinh" class="fadeIn second" name="namSinh" placeholder="Năm sinh">
+                    <span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="gioiTinh" class="fadeIn second" name="gioiTinh" placeholder="Giới tính">
+                    <span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="diaChi" class="fadeIn second" name="diaChi" placeholder="Địa chỉ">
+                    <span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="sdt" class="fadeIn second" name="sdt" placeholder="Số điện thoại">
+                    <span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="tenDN" class="fadeIn second" name="tenDN" placeholder="Tên đăng nhập">
+                    <span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="matKhau" class="fadeIn third" name="matKhau" placeholder="Mật khẩu"><br />
+                    <span class="form-message"></span>
+                </div>
+
+                <button type="submit" class="form-submit fadeIn fourth btn" value="ĐĂNG KÝ" style="color: #ffffff; font-size: 1.2rem; background-color: #e78278; width: 190px; height: 40px;">Đăng ký</button>
+            </form>
+
+            <div id="formFooter" class="d-flex align-content-center justify-content-around">
+                <a href="~/SanPham/Index" class="underlineHover">Trang chủ</a>
+                @*<a class="underlineHover ml-3" href="#" style="color: #D19C97;margin-left: 2rem;">Quên mật khẩu?</a>*@
+            </div>
+
+        </div>
+    </div>
+    
+</body>
+</html>

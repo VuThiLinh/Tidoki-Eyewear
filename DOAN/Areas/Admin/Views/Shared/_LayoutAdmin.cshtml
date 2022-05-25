@@ -1,0 +1,250 @@
+﻿@{ 
+    var login = Session["UserAdmin"] as DOAN.Models.tblNguoiDung;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Admin</title>
+    <link href="~/Areas/Admin/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="~/Areas/Admin/assets/css/sb-admin-2.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="~/Admin/Admin/Index">
+                <div class="sidebar-brand-icon rotate-n-10">
+                    <i class="fas fa-glasses"></i>
+                </div>
+                <div class="sidebar-brand-text mx-2">Tidoki Admin</div>
+            </a>
+            <hr class="sidebar-divider my-0">
+
+            <hr class="sidebar-divider">
+
+            @if (Session["role"] != null)
+            {
+                if (Session["role"].ToString() == Constant.ADMIN)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                            <i class="fas fa-fw fa-cog"></i>
+                            <span>Quản lý hệ thống</span>
+                        </a>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item" href="~/Admin/tblNhaCungCaps/Index">Quản lý nhà cung cấp</a>
+                                <a class="collapse-item" href="~/Admin/tblNguoiDungs/Index">Quản lý tài khoản</a>
+                                <a class="collapse-item" href="~/Admin/tblLoaiTrangThais/Index">Quản lý loại trạng thái</a>
+                                <a class="collapse-item" href="~/Admin/tblTrangThais/Index">Quản lý trạng thái</a>
+                                <a class="collapse-item" href="~/Admin/tblQuyens/Index">Quản lý quyền</a>
+
+                            </div>
+                        </div>
+                    </li> 
+                }
+                else if (Session["role"].ToString() == Constant.EMPLOYEER)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                            <i class="fas fa-fw fa-cog"></i>
+                            <span>Quản lý hệ thống</span>
+                        </a>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item" href="~/Admin/tblNhaCungCaps/Index">Quản lý nhà cung cấp</a>
+                                <a class="collapse-item" href="~/Admin/tblNguoiDungs/DSKhachHang">Quản lý tài khoản</a>
+                            </div>
+                        </div>
+                    </li>
+                }
+            }
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#LinhCute1" aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fab fa-product-hunt"></i>
+                    <span>Thông tin sản phẩm</span>
+                </a>
+                <div id="LinhCute1" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="~/Admin/tblDanhMucSPs/Index">Danh mục sản phẩm</a>
+                        <a class="collapse-item" href="~/Admin/tblSanPhams/Index">Quản lý sản phẩm</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#LinhCute2" aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fab fa-product-hunt"></i>
+                    <span>Quản lý bán hàng</span>
+                </a>
+                <div id="LinhCute2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="~/Admin/tblDonHangs/Index">Danh sách đơn hàng</a>
+                        <a class="collapse-item" href="~/Admin/tblDonHangs/DonHangMoi">Đơn hàng mới</a>
+                        <a class="collapse-item" href="~/Admin/tblDonHangs/DonHangXacNhan">Đơn hàng đã xác nhận</a>
+                        <a class="collapse-item" href="~/Admin/tblDonHangs/DonHangDangGiao">Đơn hàng đang giao</a>
+                        <a class="collapse-item" href="~/Admin/tblDonHangs/DonHangThanhCong">Đơn hàng thành công</a>
+                        <a class="collapse-item" href="~/Admin/tblDonHangs/DonHangHuy">Đơn hàng đã hủy</a>
+
+
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#LinhCute3" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Quản lý nhập hàng</span>
+                </a>
+                <div id="LinhCute3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="~/Admin/tblPhieuNhaps/Index">Danh sách phiếu nhập</a>
+                        @*<a class="collapse-item" href="~/Admin/tblChiTietPhieuNhaps/Index">Chi tiết phiếu nhập</a>*@
+                        <a class="collapse-item" href="~/Admin/tblPhieuNhaps/PhieuNhapDangCho">Phiếu nhập đang chờ</a>
+                        <a class="collapse-item" href="~/Admin/tblPhieuNhaps/PhieuNhapDaThongQua">Phiếu nhập đã thông qua</a>
+                        <a class="collapse-item" href="~/Admin/tblPhieuNhaps/PhieuDaNhap">Phiếu đã nhập</a>
+                        <a class="collapse-item" href="~/Admin/tblPhieuNhaps/PhieuNhapHuy">Phiếu nhập đã hủy</a>
+                    </div>
+                </div>
+            </li>
+            @*@if (Session["role"] != null)
+            {
+                if (Session["role"].ToString() == Constant.ADMIN)
+                {
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#LinhCute4" aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Báo cáo thống kê</span>
+            </a>
+            <div id="LinhCute4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="">Danh sách các sp đã bán</a>
+                <a class="collapse-item" href="cards.html">Danh sách phiếu nhập</a>
+                <a class="collapse-item" href="cards.html">Thống kê doanh thu</a>
+
+                </div>
+            </div>
+        </li>
+}
+}*@
+
+
+            <hr class="sidebar-divider">
+
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @if (login != null)
+                                {
+                                    <span class="text-dark">@login.TenNguoiDung</span>
+
+                                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                        <a class="dropdown-item" href="@Url.Action("Edit", "DangNhap", new { id = login.MaNguoiDung})">
+                                            <i class="fas fa-user fa-sm fa-fw mr-2 text-dark"></i>
+                                            Thông tin tài khoản
+                                        </a>
+                                        <a class="dropdown-item" href="~/DangNhap/Logout" data-toggle="modal" data-target="#logoutModal">
+                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-dark"></i>
+                                            Đăng xuất
+                                        </a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <span class="text-dark">Tài khoản </span>
+                                }
+                            </a>
+                            <div class="dropdown-menu py-0 mt-0 bg-primary">
+                                <a href="~/Admin/DangNhap/Index" class="dropdown-item">Đăng nhập</a>
+                                @*<a href="~/login/Create" class="dropdown-item">Đăng ký</a>*@
+                            </div>
+
+                            @*<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Thông tin tài khoản
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Cài đặt chung
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Đăng xuất
+                                    </a>
+                                </div>*@
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </div>
+
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>TIDOKI EYEWEAR - 2022</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="~/Admin/DangNhap/Logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Areas/Admin/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Areas/Admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Areas/Admin/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="~/Areas/Admin/assets/js/sb-admin-2.min.js"></script>
+    @*<script src="~/Areas/Admin/assets/vendor/chart.js/Chart.min.js"></script>
+    <script src="~/Areas/Admin/assets/js/demo/chart-area-demo.js"></script>
+    <script src="~/Areas/Admin/assets/js/demo/chart-pie-demo.js"></script>*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

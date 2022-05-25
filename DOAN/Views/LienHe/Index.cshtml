@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Trang liên hệ";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<span class="container-fluid text-dark pl-5 pr-5 pt-5 nav-title" style="font-size: 1.2rem; margin-left: 16px;">Trang chủ > <span class="text-primary">Liên hệ</span></span>
+
+<div class="container-fluid pt-5">
+    <div class="text-center mb-4">
+        <h2 class="section-title px-5"><span class="px-2">Mọi thắc mắc hãy liên hệ với chúng tôi</span></h2>
+    </div>
+    <div class="row px-xl-5">
+        <div class="col-lg-7 mb-5">
+            <div class="contact-form">
+                <div id="success"></div>
+                <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                    <div class="control-group">
+                        <input type="text" class="form-control" id="name" placeholder="Tên của bạn" required="required" data-validation-required-message="Please enter your name">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div class="control-group">
+                        <input type="email" class="form-control" id="email" placeholder="Email của bạn" required="required" data-validation-required-message="Please enter your email">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div class="control-group">
+                        <textarea class="form-control" rows="6" id="message" placeholder="Ý kiến" required="required" data-validation-required-message="Please enter your message"></textarea>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">
+                            Gửi tin nhắn
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-5 mb-5">
+            <h5 class="font-weight-semi-bold mb-3">Liên lạc</h5>
+            <p>Tidoki Eyewear luôn sẵn sàng mang đến quý khách những sản phẩm đẹp nhất, chất lượng nhất, hãy tin tưởng chúng tôi. Nếu có bất kỳ thắc mắc nào, xin quý khách liên hệ để được tư vấn giải đáp</p>
+            <div class="d-flex flex-column mb-3">
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>235 Kim Mã, Ba Đình, Hà Nội</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>tidoki@email.com</p>
+                <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>0867 058 299</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid pt-3">
+    <img src="~/Theme/img/map.png" style="margin-left: 46px;" />
+</div>

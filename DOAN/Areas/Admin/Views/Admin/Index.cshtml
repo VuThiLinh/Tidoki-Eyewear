@@ -1,0 +1,236 @@
+﻿@model DOAN.ViewModels.StatisticIndexViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+}
+
+<div class="row">
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Tổng sản phẩm
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TotalProduct</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Tổng sán phẩm bán
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TotalOrderSuccees</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            Đơn hàng mới
+                        </div>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">@Model.TotalOrderNew</div>
+                            </div>
+                            @*<div class="col">
+                                    <div class="progress progress-sm mr-2">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>*@
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pending Requests Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            Đơn hàng hủy
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TotalOrderCanel</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*@if (Session["role"] != null)
+{
+    if (Session["role"].ToString() == Constant.ADMIN)
+    {*@
+        <table class="table table-bordered text-dark">
+            <tr>
+                <th>Danh mục sản phẩm</th>
+                <th>Tồng Số lượng</th>
+                <th>Đơn giá nhỏ nhất</th>
+                <th>Đơn giá lớn nhất</th>
+                <th>Tổng tiền nhập</th>
+                @*<th>Tổng tiền bán</th>*@
+            </tr>
+            @foreach (var r in Model.ReportInfo)
+            {
+                <tr>
+                    <td>@r.Group</td>
+                    <td>@r.Count</td>
+                    @*<td>@Html.FormatValue(r.Min, "{0:c}")</td>*@
+                    <td>
+                        @{
+                            var fomatPriceMin = String.Format(info, "{0:c}", r.Min);
+                        }
+                        @fomatPriceMin
+                    </td>
+                    <td>
+                        @{
+                            var fomatpriceMax = String.Format(info, "{0:c}", r.Max);
+                        }
+                        @fomatpriceMax
+                    </td>
+                    <td>
+                        @{
+                            var fomatSumImport = String.Format(info, "{0:c}", r.SumImportPrice);
+                        }
+                        @fomatSumImport
+                    </td>
+                    @*<td>
+                        @{
+                            var fomatpriceSum = String.Format(info, "{0:c}", r.Sum);
+                        }
+                        @fomatpriceSum
+                    </td>*@
+
+                </tr>
+            }
+        </table>
+
+        @*<div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+
+        @section scripts{
+
+            <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+            <script type="text/javascript">
+            google.load("visualization", "1", { packages: ["corechart"] });
+            google.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                  ['TENLOAISP', 'Doanh so'],
+                  @foreach (var r in Model.ReportInfo)
+                  {
+                      <text>['@r.Group', @r.Sum],</text>
+                  }
+                    ]);
+
+                var options = {
+                    title: 'Tổng tiền sản phẩm',
+                    is3D: true,
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+                chart.draw(data, options);
+            }
+            </script>
+
+        }*@
+
+
+        <h2 class="text-dark"> Doanh thu theo tháng</h2>
+        <table class="table table-bordered text-dark">
+            <tr>
+                <th>Thời gian</th>
+                <th>Doanh Thu</th>
+
+            </tr>
+            @foreach (var r in Model.StatisticMonthYear)
+            {
+        <tr>
+            <td>@r.MonthYear</td>
+            <td>
+                @{
+                    var fomatTotalMoney = String.Format(info, "{0:c}", r.TotalMoney);
+                }
+                @fomatTotalMoney
+            </td>
+            @*<td>@Html.FormatValue(r.TotalMoney, "{0:c}")</td>*@
+        </tr>
+            }
+        </table>
+        <h2 class="text-dark">Doanh thu theo danh mục sản phẩm </h2>
+        <table class="table table-bordered text-dark">
+            <tr>
+                <th>Danh mục sản phẩm</th>
+                <th>Doanh Thu</th>
+
+            </tr>
+            @foreach (var r in Model.StatisticCategory)
+            {
+        <tr>
+            <td>@r.Name</td>
+            <td>
+                @{
+                    var fomatTotalMoney = String.Format(info, "{0:c}", r.TotalMoney);
+                }
+                @fomatTotalMoney
+            </td>
+            @*<td>@Html.FormatValue(r.TotalMoney, "{0:c}")</td>*@
+        </tr>
+            }
+        </table>
+
+        <h2 class="text-dark">Doanh thu theo nhà cung cấp</h2>
+        <table class="table table-bordered text-dark">
+            <tr>
+                <th>Tên nhà cung cấp</th>
+                <th>Doanh Thu</th>
+
+            </tr>
+            @foreach (var r in Model.StatisticManufacture)
+            {
+        <tr>
+            <td>@r.Name</td>
+            <td>
+                @{
+                    var fomatTotalMoney = String.Format(info, "{0:c}", r.TotalMoney);
+                }
+                @fomatTotalMoney
+            </td>
+            @*<td>@Html.FormatValue(r.TotalMoney, "{0:c}")</td>*@
+        </tr>
+            }
+        </table>
+
+    @*}
+}*@

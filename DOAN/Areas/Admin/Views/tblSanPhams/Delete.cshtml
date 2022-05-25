@@ -1,0 +1,90 @@
+﻿@model DOAN.Models.tblSanPham
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .text-color {
+        color: #3c3d46;
+    }
+</style>
+<h3 class="text-color">Bạn có chắc chắn xóa không?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal text-color">
+        <dt>
+            Tên sản phẩm:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSanPham)
+        </dd>
+
+        <dt>
+            Hình ảnh:
+        </dt>
+
+        <dd>
+            <img src="@Model.HinhAnh" width="260" />
+        </dd>
+
+        <dt>
+            Mô tả:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            Số lượng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+        <dt>
+            Đơn vị tính:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonViTinh)
+        </dd>
+
+        <dt>
+            Đơn giá:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonGia)
+        </dd>
+
+        <dt>
+            Tên danh mục:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblDanhMucSP.TenDanhMuc)
+        </dd>
+
+        <dt>
+            Tên nhà cung cấp:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblNhaCungCap.TenNCC)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-primary" /> |
+            @Html.ActionLink("Danh sách", "Index")
+        </div>
+    }
+</div>

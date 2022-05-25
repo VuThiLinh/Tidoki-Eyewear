@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    var list = Session["Cart"] as List<DOAN.Models.Item>;
+}
+
+<style>
+    .cartinfo {
+        display: none;
+    }
+</style>
+<div class="row px-xl-5 py-5">
+    <h4>THÔNG TIN GIỎ HÀNG</h4><br />
+    <table class="table table-bordered w-100 px-xl-5">
+        <thead>
+            <tr class="text-center">
+                <th align="center">Hình ảnh</th>
+                <th align="center">Tên sản phẩm</th>
+                <th align="center">Đơn giá</th>
+                <th align="center">Số lượng</th>
+                <th align="center">Thành tiền</th>
+                <th>Xóa</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (list != null)
+                {
+                    foreach (var item in list)
+                    {
+                        <tr class="text-dark">
+                            <td align="center">
+                                <img src="@item.Anh" width="120" />
+                            </td>
+                            <td>
+                                @item.TenSP
+                            </td>
+                            <td align="right">
+                                @item.Gia.ToString("#,##0")
+                            </td>
+                            <td align="center">
+                                <input type="number" class="ChangePrice" min="0" max="9999"
+                                       data-price="@item.Gia"
+                                       data-id="@item.MaSP" name="ProQty" id="ProQty" value=" @item.SoLuong" style="width:50px" />
+                            </td>
+                            <td align="right" class="ThanhTien" data-tien="@item.Total">
+                                @item.Total.ToString("#,##0")
+                            </td>
+                            <td>
+                                <a href="@Url.Action("XoaMot","Cart", new { @id = item.MaSP})">
+                                    <i class="fas fa-trash-alt" style="font-size: 1.4rem;"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" align="right" class="font-weight-bold">
+                    Tổng thanh toán:
+                </td>
+                <td class="TongTien font-weight-bold" style="text-align:right">
+                    @ViewBag.Total.ToString("#,##0")
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="d-flex justify-content-between">
+        <a href="~/Cart/Xoa" class="btn btn-secondary">Xóa giỏ hàng</a>
+        <div style="margin-left: 60.6rem;">
+            <input type="button" value="Chọn tiếp" class="btn border-primary text-primary" onclick="location.href='/SanPham/Index'" style="margin-left: 88px;"/>
+            <a href="#" class="btn btn-primary thanhtoan">Mua hàng</a>
+        </div>
+    </div>
+    <div class="container cartinfo mt-5">
+        @Html.Partial("DonHang")
+    </div>
+</div>
+@section scripts
+{
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.ChangePrice').change(function () {
+                pID = $(this).attr("data-id");
+                Qty = $(this).val();
+                price = $(this).attr("data-price");
+                console.log(pID + "-" + Qty);
+                $.ajax({
+                    type: "POST",
+                    url: "/Cart/UpdateCart/",
+                    data: {
+                        MaSP: pID,
+                        SoLuong: Qty,
+                        Gia: price
+                    }
+                });
+                changeTotalMoney($(this));
+            });
+            function changeTotalMoney(target) {
+                total = Qty * price;
+                target.parent().siblings('.ThanhTien').text(total);
+                target.parent().siblings('.ThanhTien').attr("data-tien", total);
+                tinhTong();
+            }
+            function UpdateTotal() {
+                var sum = 0;
+                $('.ThanhTien').each(function () {
+                    sum += parseInt($(this).text().match(/\d/g).join(""));
+                });
+            }
+          
+            $('.thanhtoan').click(function () {
+                $('.cartinfo').css('display', 'block');
+            });
+
+            function tinhTong() {
+                let tongThanhTien = 0;
+                $('.ThanhTien').each(function () {
+                    let tt = $(this).attr("data-tien");
+                    tongThanhTien += parseFloat(tt);
+                });
+                $('.TongTien').text(tongThanhTien);
+                console.log(tongThanhTien);
+            }
+        });
+    </script>
+}

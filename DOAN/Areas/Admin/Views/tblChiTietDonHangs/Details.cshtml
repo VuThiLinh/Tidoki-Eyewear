@@ -1,0 +1,57 @@
+﻿@model DOAN.Models.tblChiTietDonHang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Thông tin chi tiết đơn hàng</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã đơn hàng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaDonHang)
+        </dd>
+
+        <dt>
+            Số lượng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+        <dt>
+            Đơn giá:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonGia)
+        </dd>
+
+        <dt>
+            Tên người nhận:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblDonHang.TenNguoiNhan)
+        </dd>
+
+        <dt>
+            Tên sản phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblSanPham.TenSanPham)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Danh sách", "Index")
+</p>

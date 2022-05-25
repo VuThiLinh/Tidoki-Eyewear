@@ -1,0 +1,69 @@
+﻿
+@{
+    //ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<html style="background-color: #e78278;">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Đăng nhập</title>
+    <link href="~/Areas/Admin/assets/login/login.css" rel="stylesheet" />
+    <style>
+        .active {
+            border-bottom: 2px solid #D19C97 !important
+        }
+
+        .cssa {
+            color: #0d0d0d;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin: 40px 8px 10px 8px;
+        }
+        input[type=password] {
+            background-color: #f6f6f6;
+            border: none;
+            color: #0d0d0d;
+            padding: 15px 32px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 5px;
+            width: 85%;
+            border: 2px solid #f6f6f6;
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            -ms-transition: all 0.5s ease-in-out;
+            -o-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+            -webkit-border-radius: 5px 5px 5px 5px;
+            border-radius: 5px 5px 5px 5px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <a class="active cssa"> Đăng nhập </a>
+            <a href="~/Login/Create" class="inactive underlineHover cssa">Đăng ký </a>
+           
+            @if (TempData["erorr"] != null)
+            {
+                <p style="color: red;">@TempData["erorr"].ToString()</p>
+            }
+            <form action="/Login/Index" method="post">
+                <input type="text" id="userName" class="fadeIn second" name="userName" autocomplete="off" placeholder="Tên đăng nhập">
+                <input type="password" id="password" class="fadeIn third" autocomplete="off" name="passWord" placeholder="Mật khẩu">
+                <input type="submit" class="fadeIn fourth" value="ĐĂNG NHẬP" style="background-color: #e78278;">
+            </form>
+            <div id="formFooter" class="align-content-center ">
+                @*<a href="~/SanPham/Index" class="underlineHover" style="margin-right: 2rem;">Trang chủ</a>*@
+                <a class="underlineHover ml-3" href="~/Home/Index">Trang chủ</a>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

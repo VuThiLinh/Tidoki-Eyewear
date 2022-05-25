@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DOAN.Models.tblBinhLuan>
+@using DOAN.Models;
+@{
+    var userInfo = Session["UserLogin"] as tblNguoiDung;
+}
+
+<section>
+    <div class="container my-5 py-5">
+        <div class="row d-flex justify-content-center">
+            @if (Model.Any())
+            {
+                <div class="col-md-12 col-lg-10">
+                    <p class="fw-light mb-4 pb-2">Nội dung bình luận</p>
+                    @foreach (var item in Model)
+                    {
+                        <div class="card text-dark">
+                            <div class="card-body p-4">
+
+                                <div class="d-flex flex-start">
+                                    <img class="rounded-circle shadow-1-strong me-3"
+                                         src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp" alt="avatar" width="60"
+                                         height="60" />
+                                    <div>
+                                        <h6 class="fw-bold mb-1">@item.tblNguoiDung.TenNguoiDung</h6>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <p class="mb-0">
+                                                @item.ThoiGianBL
+                                            </p>
+                                            <a href="#!" class="link-muted editcomment" aria-hidden="true" data-toggle="modal" data-target="#editcomment" data-id="@item.MaBinhLuan" data-value="@item.NoiDungBL" data-tdn="@item.MaNguoiDung" data-masp="@item.MaSanPham" data-nbl="@item.ThoiGianBL"><i class="fas fa-pencil-alt ms-2 ml-3 pl-2"></i></a>
+
+                                            <a href="#!" class="link-muted deleteComment" aria-hidden="true"
+                                               data-toggle="modal"
+                                               data-target="#deletebinhluan"
+                                               data-id="@item.MaBinhLuan"><i class="fa fa-minus-square ms-2"></i></a>
+                                        </div>
+                                        <p class="mb-0">
+                                            @item.NoiDungBL
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="my-0" />
+
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
